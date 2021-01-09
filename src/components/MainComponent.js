@@ -23,8 +23,7 @@ function Main(){
           setRecords(jsonData)
           console.log(jsonData);
       } catch (error) {
-          console.log(error)
-          setError(error)
+          // setError(error.message)
       }
       
   //eslint-disable-next-line
