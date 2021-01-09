@@ -1,6 +1,4 @@
-export const records = {
-    "records": {
-    "profiles": [
+export const RECORDS = [
     {
     "FirstName": "Milo",
     "LastName": "Howell",
@@ -512,7 +510,3 @@ export const records = {
     "PaymentMethod": "check"
     },
 ]
-},
-"status": "success",
-"size": 52
-}
