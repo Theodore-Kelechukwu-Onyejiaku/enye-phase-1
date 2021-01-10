@@ -4,8 +4,9 @@ import {Stagger, Fade} from "react-animation-components";
 
 function Loader(){
     return(
-        <div style={{margin: "20vh 50vh 20vh 50vh"}}>
-                <div className="preloader-wrapper big active">
+        <div style={{margin: "auto"}}>
+            <div style={{width: "100%", margin: "auto"}}>
+            <div className="preloader-wrapper big active">
                 <div className="spinner-layer spinner-blue-only">
                 <div className="circle-clipper left">
                 <div className="circle"></div>
@@ -16,6 +17,7 @@ function Loader(){
                 </div>
                 </div>
                 </div>
+            </div>
         </div>
         
     )
@@ -79,7 +81,32 @@ function Home({error, localRecords, records}){
     
     if(loading){
         return(
-            <Profile error={error} localRecords={localRecords} records/>
+            <div>
+                <div classNam="container">
+                    <div className="row">
+                        
+                        <div className="col s12 m6 l9">
+                        <i class="material-icons">filter</i>
+                        </div>
+                        <div className="col s12 m6 l3">
+                            <nav>
+                                <div className="nav-wrapper">
+                                    <form>
+                                        <div className="input-field">
+                                            <input id="search" type="search" required placeholder="Search records"/>
+                                            <label className="label-icon" for="search"><i className="material-icons">search</i></label>
+                                            <i className="material-icons">close</i>
+                                        </div>
+                                    </form>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>              
+
+                <Profile error={error} localRecords={localRecords} records/>
+            </div>
+            
         )
     }else{
         return(
