@@ -5,7 +5,7 @@ import { SEARCH } from "./searchFunction";
 import Footer from "./FooterComponent";
 import Pagination from "./PaginationComponent";
 
-function Home({error, localRecords, records}){
+function Home({error, records}){
     const [loading, setLoading ] = useState(false);
     const [isFiltered, setIsFiltered] = useState(false);
     const [filterBy, setFilterBy] = useState("");
@@ -38,7 +38,7 @@ function Home({error, localRecords, records}){
      //Get Current Posts
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = localRecords.slice(indexOfFirstPost, indexOfLastPost);
+    const currentPosts = records.slice(indexOfFirstPost, indexOfLastPost);
 
     //Change Page
     const paginate = pageNumber => setCurrentPage(pageNumber)
@@ -91,13 +91,13 @@ function Home({error, localRecords, records}){
                                     <button className="btn btn red" onClick={()=>{clearFilter()}}>Clear Filter</button>
                                     
                                 </div>
-                                <Pagination postsPerPage={postsPerPage} totalPosts={localRecords.length} paginate={paginate}/>
+                                <Pagination postsPerPage={postsPerPage} totalPosts={records.length} paginate={paginate}/>
 
-                                <Profile error={error} localRecords={currentPosts} records isFiltered={isFiltered} filterBy={filterBy}/>
+                                <Profile error={error} records={currentPosts} records isFiltered={isFiltered} filterBy={filterBy}/>
                             </div>
                         </div>
                     </div>
-                    <Pagination postsPerPage={postsPerPage} totalPosts={localRecords.length} paginate={paginate}/>
+                    <Pagination postsPerPage={postsPerPage} totalPosts={records.length} paginate={paginate}/>
             </div>
             <Footer/>
             </React.Fragment>

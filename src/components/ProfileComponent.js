@@ -6,13 +6,13 @@ import ReactPaginate from "react-paginate";
 function Profile({error, localRecords, records, isFiltered, filterBy}){
     const [data, setData] = useState(localRecords);
     const [offset, setOffset] = useState(0);
-    // if(error){
-    //     return(
-    //         <div>{error}</div>
-    //     )
-    // }
+    if(error){
+        return(
+            <div>{error}</div>
+        )
+    }
 
-    // else{
+    else{
         if(isFiltered){
             return (
                 <div>
@@ -78,7 +78,7 @@ function Profile({error, localRecords, records, isFiltered, filterBy}){
             )
         }
                
-    // }
+    }
 }
 
 export default Profile;
