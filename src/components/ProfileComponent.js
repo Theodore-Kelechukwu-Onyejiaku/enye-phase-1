@@ -73,19 +73,7 @@ function Profile({error, localRecords, records, isFiltered, filterBy}){
                         
                     })}
                 </Stagger>
-                <ReactPaginate
-                    previousLabel={'previous'}
-                nextLabel={'next'}
-                breakLabel={'...'}
-                breakClassName={'break-me'}
-                pageCount={4}
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={5}
-                onPageChange={offset}
-                containerClassName={'pagination'}
-                subContainerClassName={'pages pagination'}
-                activeClassName={'active'}
-            />
+                
                 </div>
             )
         }

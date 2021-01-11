@@ -3,11 +3,14 @@ import Loader from "./LoaderComponent";
 import Profile from "./ProfileComponent";
 import { SEARCH } from "./searchFunction";
 import Footer from "./FooterComponent";
+import Pagination from "./PaginationComponent";
 
 function Home({error, localRecords, records}){
     const [loading, setLoading ] = useState(false);
     const [isFiltered, setIsFiltered] = useState(false);
     const [filterBy, setFilterBy] = useState("");
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage, setpostsPerPage] = useState(20);
 
     const filter =(filterType)=>{
         setIsFiltered(true);
@@ -32,6 +35,14 @@ function Home({error, localRecords, records}){
         SEARCH(e);
     }
     
+     //Get Current Posts
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = localRecords.slice(indexOfFirstPost, indexOfLastPost);
+
+    //Change Page
+    const paginate = pageNumber => setCurrentPage(pageNumber)
+
     if(loading){
         return(
             <React.Fragment>
@@ -80,11 +91,13 @@ function Home({error, localRecords, records}){
                                     <button className="btn btn red" onClick={()=>{clearFilter()}}>Clear Filter</button>
                                     
                                 </div>
-                                <Profile error={error} localRecords={localRecords} records isFiltered={isFiltered} filterBy={filterBy}/>
+                                <Pagination postsPerPage={postsPerPage} totalPosts={localRecords.length} paginate={paginate}/>
+
+                                <Profile error={error} localRecords={currentPosts} records isFiltered={isFiltered} filterBy={filterBy}/>
                             </div>
                         </div>
                     </div>
-                    
+                    <Pagination postsPerPage={postsPerPage} totalPosts={localRecords.length} paginate={paginate}/>
             </div>
             <Footer/>
             </React.Fragment>

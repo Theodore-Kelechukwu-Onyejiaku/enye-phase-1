@@ -11,23 +11,26 @@ function Main(){
   const [records, setRecords] = useState("");
   const [localRec, setLocalRecords] = useState(RECORDS);
   const [error, setError ] = useState("");
+  
 
   
 
-  useEffect(async ()=> {
-     
+  useEffect(()=> {
+     const fetchRecords = async ()=>{
       try {
-          const data = await fetch("http://api.enye.tech/v1/challenge/records");
-          const jsonData = await data.json()
-          // setRecords(jsonData)
-          console.log(jsonData);
+        const data = await fetch("http://api.enye.tech/v1/challenge/records");
+        const jsonData = await data.json()
+        // setRecords(jsonData)
+        console.log(jsonData);
       } catch (error) {
-          // setError(error.message)
+        // setError(error.message)
       }
-      
-  //eslint-disable-next-line
-  }, [])
+     }
 
+     fetchRecords();
+  }, []);
+
+ 
     return (
       <div>
               <Header/>
