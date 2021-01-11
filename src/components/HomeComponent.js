@@ -61,7 +61,7 @@ function Home({error, localRecords, records}){
                                 </div> 
                                 
 
-                                <Profile error={error} localRecords={localRecords} records/>
+                                <Profile error={error} localRecords={localRecords} records />
                             </div>
                         </div>
                     </div>
