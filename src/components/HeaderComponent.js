@@ -14,9 +14,15 @@ function Header(){
                         <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                         <ul className="right hide-on-med-and-down">
                             <li>
-                                <NavLink className="nav-link" to="/menu">
-                                    <i className="material-icons left">info</i>About
-                                </NavLink>
+                             {/* Element Showed */}
+                                <a id="menu" href="#" className="waves-effect waves-light btn btn-floating red"><i className="material-icons left">info</i></a>
+                                {/* TAP TARGET */}
+                                <div className="tap-target" data-target="menu">
+                                <div className="tap-target-content">
+                                    <h5>Title</h5>
+                                    <p>A bunch of text</p>
+                                </div>
+                                </div>
                             </li>
                             <li>
                                 <a className="modal-trigger" href="#modal1">

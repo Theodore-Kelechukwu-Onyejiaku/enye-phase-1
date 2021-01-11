@@ -1,76 +1,10 @@
 import React, { useEffect, useState } from "react";
-import {Stagger, Fade} from "react-animation-components";
-
-
-function Loader(){
-    return(
-        <div style={{margin: "auto"}}>
-            <div style={{width: "100%", margin: "auto"}}>
-            <div className="preloader-wrapper big active">
-                <div className="spinner-layer spinner-blue-only">
-                <div className="circle-clipper left">
-                <div className="circle"></div>
-                </div><div className="gap-patch">
-                <div className="circle"></div>
-                </div><div className="circle-clipper right">
-                <div className="circle"></div>
-                </div>
-                </div>
-                </div>
-            </div>
-        </div>
-        
-    )
-}
-
-function Profile({error, localRecords, records}){
-    // if(error){
-    //     return(
-    //         <div>{error}</div>
-    //     )
-    // }
-
-    // else{
-        return (
-            <div className="container">
-            <div className="row">
-            <Stagger in>
-                {localRecords.map((item) =>{
-                    return(
-                        <Fade in>
-                           
-                                <div className="col s12 m6 l4">
-                                    <div className="card blue-grey darken-1">
-                                        <div className="card-content white-text">
-                                        <div className="chip">
-                                            <img src="https://picsum.photos/300" alt="Contact Person" />
-                                            Jane Doe
-                                        </div>
-                                        <span className="card-title">Card Title</span>
-                                        <p>I am a very simple card. I am good at containing small bits of information.
-                                        I am convenient because I require little markup to use effectively.</p>
-                                        </div>
-                                        <div className="card-action">
-                                        <a href="#">This is a link</a>
-                                        <a href="#">This is a link</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            
-                        </Fade>
-                    )
-                    
-                })}
-            </Stagger>
-            </div>
-            </div>
-        )       
-    // }
-}
-
+import Loader from "./LoaderComponent";
+import Profile from "./ProfileComponent";
 
 function Home({error, localRecords, records}){
     const [loading, setLoading ] = useState(false);
+    
 
     useEffect(async ()=> {
         setTimeout(()=>{
@@ -78,33 +12,109 @@ function Home({error, localRecords, records}){
         }, 2000)
     //eslint-disable-next-line
     }, [])
+
+    
+
+    const onSearch = (e)=>{
+        var listItems = document.querySelectorAll(".item");
+        var error = document.querySelector(".error");
+        var searchBox = document.querySelector(".search");
+
+       
+
+        const matchText = (textEntered, listItem) =>{
+            var textToMatch =  new RegExp(`${textEntered.toLowerCase()}`);
+            var report = textToMatch.test(listItem.toLowerCase());
+        
+            return report
+        }
+
+        const displayResult = () => {
+            listItems.forEach(each =>{
+               const isAMatch = matchText(e.target.value, each.innerText)
+              if(isAMatch){
+                  each.parentElement.style.display = "block";
+              }else{
+                  each.parentElement.style.display = "none"
+              }
+            })
+        }
+    
+        const showListItems = () =>{
+            listItems.forEach(each => {
+                each.parentElement.style.display = "block";
+            })
+        }
+        
+        if(e.target.value == ""){
+            showListItems()
+        }
+        else{
+            displayResult()
+        }
+
+        // listItems.forEach(item =>{
+        //     console.log(item.parentElement)
+        // })
+    }
     
     if(loading){
         return(
-            <div>
-                <div classNam="container">
+                <div className="container">
                     <div className="row">
-                        
-                        <div className="col s12 m6 l9">
-                        <i class="material-icons">filter</i>
-                        </div>
-                        <div className="col s12 m6 l3">
-                            <nav>
-                                <div className="nav-wrapper">
-                                    <form>
-                                        <div className="input-field">
-                                            <input id="search" type="search" required placeholder="Search records"/>
-                                            <label className="label-icon" for="search"><i className="material-icons">search</i></label>
-                                            <i className="material-icons">close</i>
+                        <div className="col s12 m8 l8 hide-on-med-and-down">
+                            <div className="row">
+                                <div className="col s12 m12 l12">
+                                    <nav>
+                                        <div className="nav-wrapper">
+                                            <form>
+                                                <div className="input-field">
+                                                    <input id="search" className="search" type="search" required placeholder="Search records" onChange={(e)=>onSearch(e)}/>
+                                                    <label className="label-icon" for="search"><i className="material-icons">search</i></label>
+                                                    <i className="material-icons">close</i>
+                                                </div>
+                                            </form>
+
                                         </div>
-                                    </form>
-                                </div>
-                            </nav>
+                                    </nav>
+                                    <p className="error red-text" style={{display: "none"}}>This is an error</p>
+                                </div> 
+                                
+
+                                <Profile error={error} localRecords={localRecords} records/>
+                            </div>
+                        </div>
+                        <div className="col s12 m12 l12 show-on-med-and-down hide-on-large-only">
+                            <div className="row">
+                                <div className="col s12 m12 l12">
+                                    <nav>
+                                        <div className="nav-wrapper">
+                                            <form>
+                                                <div className="input-field">
+                                                    <input id="search" className="search" type="search" required placeholder="Search records" onChange={(e)=>onSearch(e)}/>
+                                                    <label className="label-icon" for="search"><i className="material-icons">search</i></label>
+                                                    <i className="material-icons">close</i>
+                                                </div>
+                                            </form>
+                                            
+                                        </div>
+                                    </nav>
+                                    <p className="error red-text" style={{display: "none"}}>This is an error</p>
+                                </div> 
+                                
+
+                                <Profile error={error} localRecords={localRecords} records/>
+                            </div>
+                        </div>
+                        <div className="col s12 m4 l4 hide-on-med-and-down">
+                            Filter
                         </div>
                     </div>
-                </div>              
-
-                <Profile error={error} localRecords={localRecords} records/>
+                       
+                    <div className="row">
+                        
+                    </div>        
+                        
             </div>
             
         )
@@ -112,10 +122,7 @@ function Home({error, localRecords, records}){
         return(
             <Loader />
         )
-    }
-    
-
-    
+    } 
 }
 
 export default Home;

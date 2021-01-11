@@ -35,6 +35,12 @@
              $(document).ready(function(){
                 $('.sidenav').sidenav();
                 $('.modal').modal();
+                $('.tap-target').tapTarget();
+
+                $("#menu").click(function(){
+                  $('.tap-target').tapTarget('open')
+                })
+
              });
       </script>
     
