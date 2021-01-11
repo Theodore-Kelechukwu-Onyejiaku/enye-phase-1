@@ -81,7 +81,8 @@ function Home({error, localRecords, records}){
                                 </div> 
                                 
 
-                                <Profile error={error} localRecords={localRecords} records/>
+                                <Profile error={error} localRecords={localRecords} records isFiltered={isFiltered}/>
+
                             </div>
                         </div>
                         <div className="col s12 m4 l4  hide-on-med-and-down">
