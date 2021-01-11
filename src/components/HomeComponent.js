@@ -1,61 +1,33 @@
 import React, { useEffect, useState } from "react";
 import Loader from "./LoaderComponent";
 import Profile from "./ProfileComponent";
+import { SEARCH } from "./searchFunction";
 
 function Home({error, localRecords, records}){
     const [loading, setLoading ] = useState(false);
+    const [isFiltered, setIsFiltered] = useState(false);
+    const [filterBy, setFilterBy] = useState("");
+
+    const filter =(filterType)=>{
+        setIsFiltered(true);
+        setFilterBy(filterBy);
+    }
+
+    const clearFilter = ()=>{
+        setIsFiltered(false);
+    }
     
 
     useEffect(async ()=> {
         setTimeout(()=>{
             setLoading(true)
         }, 2000)
+
     //eslint-disable-next-line
     }, [])
 
-    
-
     const onSearch = (e)=>{
-        var listItems = document.querySelectorAll(".item");
-        var error = document.querySelector(".error");
-        var searchBox = document.querySelector(".search");
-
-       
-
-        const matchText = (textEntered, listItem) =>{
-            var textToMatch =  new RegExp(`${textEntered.toLowerCase()}`);
-            var report = textToMatch.test(listItem.toLowerCase());
-        
-            return report
-        }
-
-        const displayResult = () => {
-            listItems.forEach(each =>{
-               const isAMatch = matchText(e.target.value, each.innerText)
-              if(isAMatch){
-                  each.parentElement.style.display = "block";
-              }else{
-                  each.parentElement.style.display = "none"
-              }
-            })
-        }
-    
-        const showListItems = () =>{
-            listItems.forEach(each => {
-                each.parentElement.style.display = "block";
-            })
-        }
-        
-        if(e.target.value == ""){
-            showListItems()
-        }
-        else{
-            displayResult()
-        }
-
-        // listItems.forEach(item =>{
-        //     console.log(item.parentElement)
-        // })
+        SEARCH(e);
     }
     
     if(loading){
@@ -77,11 +49,10 @@ function Home({error, localRecords, records}){
 
                                         </div>
                                     </nav>
-                                    <p className="error red-text" style={{display: "none"}}>This is an error</p>
                                 </div> 
                                 
 
-                                <Profile error={error} localRecords={localRecords} records/>
+                                <Profile error={error} localRecords={localRecords} records isFiltered={isFiltered}/>
                             </div>
                         </div>
                         <div className="col s12 m12 l12 show-on-med-and-down hide-on-large-only">
@@ -99,15 +70,26 @@ function Home({error, localRecords, records}){
                                             
                                         </div>
                                     </nav>
-                                    <p className="error red-text" style={{display: "none"}}>This is an error</p>
+                                    <div className="col s12 m12 l12 ">
+                                        
+                                        <i className="fas fa-3x fa-sliders-h">Filter</i>
+                                        <div>
+                                            <button className="btn btn" onClick={()=>{filter("FirstName")}}>First Name</button>
+                                            <button className="btn btn" onClick={()=>{clearFilter()}}>Clear Filter</button>
+                                        </div>
+                                    </div>
                                 </div> 
                                 
 
                                 <Profile error={error} localRecords={localRecords} records/>
                             </div>
                         </div>
-                        <div className="col s12 m4 l4 hide-on-med-and-down">
-                            Filter
+                        <div className="col s12 m4 l4  hide-on-med-and-down">
+                            <i className="fas fa-3x fa-sliders-h">Filter</i>
+                            <div>
+                            <button className="btn btn" onClick={()=>{filter("FirstName")}}>First Name</button>
+                            <button className="btn btn" onClick={()=>{clearFilter()}}>Clear Filter</button>
+                            </div>
                         </div>
                     </div>
                        
