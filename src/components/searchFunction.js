@@ -1,7 +1,6 @@
 export const SEARCH = (e)=>{
     
     var listItems = document.querySelectorAll(".item");
-    var error = document.querySelector(".error");
     var searchBox = document.querySelector(".search");
 
    
