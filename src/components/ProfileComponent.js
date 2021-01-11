@@ -20,7 +20,7 @@ function Profile({error, localRecords, records, isFiltered, filterBy}){
                         {localRecords.map((item) => {
                             return(
                                 <Fade in>
-                                    <div>{item[filterBy]} hello</div> 
+                                    <div>{item[filterBy]}</div> 
                                 </Fade>
                             )
                         })}
