@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Loader from "./LoaderComponent";
 import Profile from "./ProfileComponent";
 import { SEARCH } from "./searchFunction";
+import Footer from "./FooterComponent";
 
 function Home({error, localRecords, records}){
     const [loading, setLoading ] = useState(false);
@@ -33,6 +34,7 @@ function Home({error, localRecords, records}){
     
     if(loading){
         return(
+            <React.Fragment>
                 <div className="container">
                     <div className="row">
                         
@@ -43,7 +45,7 @@ function Home({error, localRecords, records}){
                                         <div className="nav-wrapper">
                                             <form>
                                                 <div className="input-field">
-                                                    <input id="search" className="search" type="search" required placeholder="Search records by firstname, username..." onChange={(e)=>onSearch(e)}/>
+                                                    <input id="search" className="search" type="search" required placeholder="Search records" onChange={(e)=>onSearch(e)}/>
                                                     <label className="label-icon" for="search"><i className="material-icons">search</i></label>
                                                     <i className="material-icons">close</i>
                                                 </div>
@@ -53,7 +55,7 @@ function Home({error, localRecords, records}){
                                     </nav>
                                     <div className="col s12 m12 l12 ">
                                         <div className="z-depth-2">
-                                            <p className="center-align">Filter By: <i className="fa fa-filter"></i></p>
+                                            <p className="center-align red-text" style={{fontSize: "200%"}}>Filter By: <i className="fa fa-filter"></i></p>
                                             <p className="center-align">
                                             <button className="btn btn" onClick={()=>{filter("FirstName")}}>First Name</button>
                                             <button className="btn btn" onClick={()=>{filter("LastName")}}>Last Name</button>
@@ -70,36 +72,22 @@ function Home({error, localRecords, records}){
                                             <button className="btn btn" onClick={()=>{filter("LastLogin")}}>Last Login</button>
                                             <button className="btn btn" onClick={()=>{filter("PaymentMethod")}}>Payment Method</button>
 
-                                            </p>
-                                            
-
-                                            
+                                            </p> 
                                         </div>
                                     </div>
                                 </div> 
-<<<<<<< HEAD
-                                
-
-                                <Profile error={error} localRecords={localRecords} records isFiltered={isFiltered}/>
-
-                            </div>
-                        </div>
-                        <div className="col s12 m4 l4  hide-on-med-and-down">
-                            <i className="fas fa-3x fa-sliders-h">Filter</i>
-                            <div>
-                            <button className="btn btn" onClick={()=>{filter("FirstName")}}>First Name</button>
-                            <button className="btn btn" onClick={()=>{clearFilter()}}>Clear Filter</button>
-=======
                                 <div className="container center-align" >
                                     <button className="btn btn red" onClick={()=>{clearFilter()}}>Clear Filter</button>
+                                    
                                 </div>
                                 <Profile error={error} localRecords={localRecords} records isFiltered={isFiltered} filterBy={filterBy}/>
->>>>>>> filter-ft
                             </div>
                         </div>
                     </div>
                     
             </div>
+            <Footer/>
+            </React.Fragment>
             
         )
     }else{

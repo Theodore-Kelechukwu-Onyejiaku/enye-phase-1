@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from "./HeaderComponent";
-import Footer from "./FooterComponent";
 import HomePage from "./HomeComponent";
-import About from "./AboutComponent";
-import {Switch, Route, Redirect, withRouter} from "react-router-dom";
+import {Switch, Route, Redirect} from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import { RECORDS } from "../shared/records"
@@ -32,17 +30,16 @@ function Main(){
 
     return (
       <div>
-            <Header/>
+              <Header/>
               <TransitionGroup>
                 <CSSTransition  classNames="page" timeout={300}>
                   <Switch>
                     <Route path="/home" component={()=> <HomePage localRecords={localRec} error={error} records={records} />}/>
-                    <Route exact path="/about"/>
                     <Redirect to="/home"/>
                   </Switch>
                 </CSSTransition>
               </TransitionGroup>
-            <Footer/>
+            
       </div>
     )
   }

@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {NavLink} from "react-router-dom";
 
-
 function Header(){
     return(
         <React.Fragment>
@@ -11,10 +10,10 @@ function Header(){
                             <NavLink className="brand-logo" to="/">
                                 <span className="">Records API</span>    
                             </NavLink>
-                        <ul className="right hide-on-med-and-down">
+                        <ul className="right">
                             <li>
                              {/* Element Showed */}
-                                <a id="menu" href="#" className="waves-effect waves-light btn btn-floating red"><i className="material-icons left">info</i></a>
+                                <a id="menu" href="#" className="waves-effect waves-light btn btn-floating pulse red"><i className="material-icons large left">info</i></a>
                                 {/* TAP TARGET */}
                                 <div className="tap-target" data-target="menu">
                                 <div className="tap-target-content">
