@@ -3,12 +3,11 @@ import {Stagger, Fade} from "react-animation-components";
 import ReactPaginate from "react-paginate";
 
 
-function Profile({error, localRecords, records, isFiltered, filterBy}){
-    const [data, setData] = useState(localRecords);
-    const [offset, setOffset] = useState(0);
-    if(error){
+function Profile({error, records, isFiltered, filterBy}){
+    
+    if(error !== ""){
         return(
-            <div>{error}</div>
+            <div>Failed To Fetch Records!</div>
         )
     }
 
@@ -17,13 +16,13 @@ function Profile({error, localRecords, records, isFiltered, filterBy}){
             return (
                 <div>
                     <Stagger in>
-                        {localRecords.map((item) => {
+                        {records.map((item, index) => {
                             return(
                                 
-                                <Fade in>
+                                <Fade in key={index}>
                                     
 
-                                                <div className="col s12 m6 l6">
+                                                <div className="col s12 m6 l6" >
                                                         <div className="card-panel">
                                                             <span>{item.FirstName}{" "}{item.LastName}</span><br/>
                                                             <span className="red-text">{filterBy}:</span>{" "}<span className="blue-text">{item[filterBy]}</span>
@@ -39,13 +38,13 @@ function Profile({error, localRecords, records, isFiltered, filterBy}){
             )
         }else{
             return (
-                <div>
+                
                 <Stagger in>
-                    {localRecords.map((item) =>{
+                    {records.map((item, index) =>{
                         return(
-                            <Fade in>
+                            <Fade in key={index}>
                                     <div className="col s12 m6 l6">
-                                    <div class="card-panel">
+                                    <div className="card-panel">
                                         <ul>
                                             <li>FirstName:<span className="blue-text">{item.FirstName}</span></li>    
                                             <li>Lastname:<span className="blue-text">{item.LastName}</span></li>    
@@ -73,8 +72,7 @@ function Profile({error, localRecords, records, isFiltered, filterBy}){
                         
                     })}
                 </Stagger>
-                
-                </div>
+            
             )
         }
                

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
+import Header from "./HeaderComponent";
 import Loader from "./LoaderComponent";
 import Profile from "./ProfileComponent";
 import { SEARCH } from "./searchFunction";
 import Footer from "./FooterComponent";
 import Pagination from "./PaginationComponent";
 
-function Home({error, records}){
-    const [loading, setLoading ] = useState(false);
+function Home({error, records, isLoading}){
     const [isFiltered, setIsFiltered] = useState(false);
     const [filterBy, setFilterBy] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
@@ -21,16 +21,6 @@ function Home({error, records}){
     const clearFilter = ()=>{
         setIsFiltered(false);
     }
-    
-
-    useEffect(async ()=> {
-        setTimeout(()=>{
-            setLoading(true)
-        }, 2000)
-
-    //eslint-disable-next-line
-    }, [])
-
     const onSearch = (e)=>{
         SEARCH(e);
     }
@@ -43,9 +33,10 @@ function Home({error, records}){
     //Change Page
     const paginate = pageNumber => setCurrentPage(pageNumber)
 
-    if(loading){
+    if(!isLoading){
         return(
             <React.Fragment>
+                <Header/>
                 <div className="container">
                     <div className="row">
                         
@@ -57,7 +48,7 @@ function Home({error, records}){
                                             <form>
                                                 <div className="input-field">
                                                     <input id="search" className="search" type="search" required placeholder="Search records" onChange={(e)=>onSearch(e)}/>
-                                                    <label className="label-icon" for="search"><i className="material-icons">search</i></label>
+                                                    <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>
                                                     <i className="material-icons">close</i>
                                                 </div>
                                             </form>
@@ -93,7 +84,7 @@ function Home({error, records}){
                                 </div>
                                 <Pagination postsPerPage={postsPerPage} totalPosts={records.length} paginate={paginate}/>
 
-                                <Profile error={error} records={currentPosts} records isFiltered={isFiltered} filterBy={filterBy}/>
+                                <Profile error={error} records={currentPosts} isFiltered={isFiltered} filterBy={filterBy}/>
                             </div>
                         </div>
                     </div>
