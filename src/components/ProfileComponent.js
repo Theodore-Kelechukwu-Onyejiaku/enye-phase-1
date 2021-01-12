@@ -74,7 +74,10 @@ function Profile({ error, records, isFiltered, filterBy, isLoading }) {
     } else {
         if (error) {
             return (
-                <h3 className="center-align red-text">Failed To Fetch Records!</h3>
+                <div>
+                <p className="center-align red-text"><i className="fa fa-2x fa-info-circle"></i></p>
+                <p className="center-align red-text">Failed To Fetch Records!</p>
+                </div>
             )
         }
         else {

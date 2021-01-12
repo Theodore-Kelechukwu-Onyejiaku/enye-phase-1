@@ -38,8 +38,8 @@ function Home({ error, records, isLoading }) {
         <React.Fragment>
             <Header />
             <div className="container">
+            <SearchComponent onSearch={onSearch} />
                 
-                <SearchComponent onSearch={onSearch} />
                 <FilterComponent filter={filter} clearFilter={clearFilter} />
                 <div className="row">
                     <div className="col s12 m12 l12">

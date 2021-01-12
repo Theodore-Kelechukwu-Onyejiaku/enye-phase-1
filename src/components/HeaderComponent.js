@@ -18,7 +18,7 @@ function Header(){
                                 <div className="tap-target" data-target="menu">
                                 <div className="tap-target-content">
                                     <h5>Enye</h5>
-                                    <p>This is an assessment by Enye! And I love it!</p>
+                                    <p>This is an assessment by Enye! And by love</p>
                                 </div>
                                 </div>
                             </li>

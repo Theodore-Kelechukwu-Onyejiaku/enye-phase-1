@@ -19,6 +19,13 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <style>
+      select{
+        all: unset;
+        background-color:grey;
+        width: 50%;
+      }
+    </style>
     
     <title>React App
     </title>
@@ -29,16 +36,18 @@
     <!--  THIS IS WHERE OUR REACT APP IS GOING TO LOAD-->
     <div id="root"></div>
     
-
-    <script src="js/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/jquery.js"></script>
       <!--JavaScript at end of body for optimized loading-->
       <script type="text/javascript" src="js/materialize.min.js"></script>
+      
       <script>
              $(document).ready(function(){
                 $('.sidenav').sidenav();
                 $('.modal').modal();
                 $('.tap-target').tapTarget();
+                $('select').formSelect();
+                
                
                 $("#floater").click(function(){
                  console.log("hello")

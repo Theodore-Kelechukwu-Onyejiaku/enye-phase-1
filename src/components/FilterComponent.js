@@ -4,8 +4,10 @@ function Filter({ filter, clearFilter }) {
 
     return (
         <React.Fragment>
-            <div className="z-depth-2">
+            <div>
+
                 <p className="center-align">
+                    <span>Filter <i className="fa fa-filter"></i></span><br/>
                     <button className="btn btn" onClick={() => { filter("FirstName") }}>First Name</button>
                     <button className="btn btn" onClick={() => { filter("LastName") }}>Last Name</button>
                     <button className="btn btn" onClick={() => { filter("Gender") }}>Gender</button>
@@ -22,10 +24,14 @@ function Filter({ filter, clearFilter }) {
                     <button className="btn btn" onClick={() => { filter("PaymentMethod") }}>Payment Method</button>
 
                 </p>
-            </div>
-            <div className="container center-align" >
-                <button className="btn btn red" onClick={() => { clearFilter() }}>Clear Filter</button>
 
+            </div>
+                
+            
+
+            <div className="center-align" >
+                
+                <button className="btn btn red" onClick={() => { clearFilter() }}>Clear Filter</button>
             </div>
             </React.Fragment>
     )
