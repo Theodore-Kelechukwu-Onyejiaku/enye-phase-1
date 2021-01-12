@@ -1,9 +1,6 @@
 export const SEARCH = (e)=>{
     
     var listItems = document.querySelectorAll(".item");
-    var searchBox = document.querySelector(".search");
-
-   
 
     const matchText = (textEntered, listItem) =>{
         var textToMatch =  new RegExp(`${textEntered.toLowerCase()}`);
@@ -29,15 +26,11 @@ export const SEARCH = (e)=>{
         })
     }
     
-    if(e.target.value == ""){
+    if(e.target.value === ""){
         showListItems()
     }
     else{
         displayResult()
     }
-
-    // listItems.forEach(item =>{
-    //     console.log(item.parentElement)
-    // })
 }
 

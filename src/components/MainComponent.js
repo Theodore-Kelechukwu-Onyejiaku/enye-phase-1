@@ -9,15 +9,15 @@ function Main(){
   const [error, setError ] = useState("");
 
   useEffect(()=> {
-    const fetchData = async () =>{
-        const data = await fetch("http://api.enye.tech/v1/challenge/records");
-        const jsonData = await data.json()
-        setRecords(jsonData.records.profiles)
-        setIsLoading(false)
+   
+      const fetchData = async () =>{
+        fetch("http://api.enye.tech/v1/challenge/records")
+        .then(response => response.json())
+        .then(data => {console.log(data); setIsLoading(false); setRecords(data.records.profiles)})
+        .catch(err => {setError(err.message); setIsLoading(false)})
     }
     fetchData();
     
-        console.log(isLoading);
 //eslint-disable-next-line
 }, [])
     return (

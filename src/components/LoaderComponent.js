@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 function Loader(){
     return(
-        <div className="center-align" style={{marginTop:"40vh"}}>
+        <div className="center-align" style={{marginTop:"10vh"}}>
             <div style={{width: "100%", margin: "auto"}}>
             <div className="preloader-wrapper big active">
                 <div className="spinner-layer spinner-blue-only">
