@@ -75,8 +75,8 @@ function Profile({ error, records, isFiltered, filterBy, isLoading }) {
         if (error) {
             return (
                 <div>
-                <p className="center-align red-text"><i className="fa fa-2x fa-info-circle"></i></p>
-                <p className="center-align red-text">Failed To Fetch Records!</p>
+                    <p className="center-align red-text"><i className="fa fa-info"></i></p>
+                    <p className="center-align red-text">Failed To Fetch Records!</p>
                 </div>
             )
         }
@@ -86,10 +86,8 @@ function Profile({ error, records, isFiltered, filterBy, isLoading }) {
             } else {
                 return <IsNotFilteredComponent records={records}/>
             }
-
         }
     }
-
 }
 
 export default Profile;

@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.2.1",
     "cross-fetch": "^3.0.6",
     "font-awesome": "^4.7.0",
+    "materialize-css": "^1.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-animation-component": "^0.2.3",

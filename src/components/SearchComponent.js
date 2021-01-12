@@ -11,7 +11,6 @@ function Search({ onSearch }) {
                         <i className="material-icons">close</i>
                     </div>
                 </form>
-
             </div>
         </nav>
     )

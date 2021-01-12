@@ -4,36 +4,40 @@ function Filter({ filter, clearFilter }) {
 
     return (
         <React.Fragment>
-            <div>
+            <div className="">
 
-                <p className="center-align">
-                    <span>Filter <i className="fa fa-filter"></i></span><br/>
-                    <button className="btn btn" onClick={() => { filter("FirstName") }}>First Name</button>
-                    <button className="btn btn" onClick={() => { filter("LastName") }}>Last Name</button>
-                    <button className="btn btn" onClick={() => { filter("Gender") }}>Gender</button>
-                    <button className="btn btn" onClick={() => { filter("Latitude") }}>Latitude</button>
-                    <button className="btn btn" onClick={() => { filter("Longitude") }}>Longitude</button>
-                    <button className="btn btn" onClick={() => { filter("CreditCardNumber") }}>Credit Card Number</button>
-                    <button className="btn btn" onClick={() => { filter("CreditCardType") }}>Credit Card Type</button>
-                    <button className="btn btn" onClick={() => { filter("Email") }}>Email</button>
-                    <button className="btn btn" onClick={() => { filter("DomainName") }}>Domain Name</button>
-                    <button className="btn btn" onClick={() => { filter("MacAddress") }}>Mac Address</button>
-                    <button className="btn btn" onClick={() => { filter("URL") }}>URL</button>
-                    <button className="btn btn" onClick={() => { filter("UserName") }}>User Name</button>
-                    <button className="btn btn" onClick={() => { filter("LastLogin") }}>Last Login</button>
-                    <button className="btn btn" onClick={() => { filter("PaymentMethod") }}>Payment Method</button>
+                <div className="row">
+                    <div class="input-field col s12 m3"></div>
+                    <div class="input-field col s12 m6">
+                        <select onChange={(e) => filter(e.target.value)}>
+                            <option value="" disabled selected>Filter By:</option>
+                            <option value="FirstName">First Name</option>
+                            <option value="LastName">Last Name</option>
+                            <option value="Gender">Gender</option>
+                            <option value="Latitude">Latitude</option>
+                            <option value="Longitude">Longitude</option>
+                            <option value="CreditCardNumber">CreditCardNumber</option>
+                            <option value="CreditCardType">CreditCardType</option>
+                            <option value="Email">Email</option>
+                            <option value="DomainName">DomainName</option>
+                            <option value="MacAddress">MacAddress</option>
+                            <option value="URL">URL</option>
+                            <option value="UserName">UserName</option>
+                            <option value="LastLogin">LastLogin</option>
+                            <option value="PaymentMethod">PaymentMethod</option>
 
-                </p>
+                        </select>
+
+                    </div>
+                    <div class="input-field col s12 m3"></div>
+                </div>
 
             </div>
-                
-            
-
-            <div className="center-align" >
-                
+            <div className="container center-align" >
                 <button className="btn btn red" onClick={() => { clearFilter() }}>Clear Filter</button>
             </div>
-            </React.Fragment>
+
+        </React.Fragment>
     )
 }
 

@@ -14,6 +14,7 @@ const Pagination = ({postsPerPage, totalPosts, paginate}) => {
     return(
         <div>
             <p className="center-align" >
+            
             {
                 pageNumbers.map(number => (
                     <span key={number}>

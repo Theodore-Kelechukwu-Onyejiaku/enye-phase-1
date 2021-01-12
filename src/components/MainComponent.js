@@ -3,15 +3,17 @@ import HomePage from "./HomeComponent";
 import {Switch, Route, Redirect} from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
+
 function Main(){
   const [isLoading, setIsLoading ] = useState(true);
   const [records, setRecords] = useState([]);
   const [error, setError ] = useState("");
 
   useEffect(()=> {
-   
+    
+  
       const fetchData = async () =>{
-        fetch("http://api.enye.tech/v1/challenge/records")
+        fetch("https://api.enye.tech/v1/challenge/records")
         .then(response => response.json())
         .then(data => {console.log(data); setIsLoading(false); setRecords(data.records.profiles)})
         .catch(err => {setError(err.message); setIsLoading(false)})
