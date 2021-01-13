@@ -1,5 +1,5 @@
 {
-  "name": "exercise-tracker",
+  "name": "enye-record-api-front-end",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,7 +20,8 @@
     "react-scripts": "3.4.1",
     "react-social-icons": "^4.1.0",
     "react-transition-group": "^4.4.1",
-    "reactstrap": "^8.7.0"
+    "reactstrap": "^8.7.0",
+    "serve": "^11.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
