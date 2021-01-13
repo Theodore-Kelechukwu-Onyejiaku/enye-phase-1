@@ -7,10 +7,10 @@ function Filter({ filter, clearFilter }) {
             <div className="">
 
                 <div className="row">
-                    <div class="input-field col s12 m3"></div>
-                    <div class="input-field col s12 m6">
+                    <div className="input-field col s12 m3"></div>
+                    <div className="input-field col s12 m6">
                         <select onChange={(e) => filter(e.target.value)}>
-                            <option value="" disabled selected>Filter By:</option>
+                            <option value="" disabled>Filter By:</option>
                             <option value="FirstName">First Name</option>
                             <option value="LastName">Last Name</option>
                             <option value="Gender">Gender</option>
@@ -29,7 +29,7 @@ function Filter({ filter, clearFilter }) {
                         </select>
 
                     </div>
-                    <div class="input-field col s12 m3"></div>
+                    <div className="input-field col s12 m3"></div>
                 </div>
 
             </div>
