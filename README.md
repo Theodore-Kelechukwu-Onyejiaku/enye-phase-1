@@ -4,4 +4,4 @@
 Restaurant App
 
 ## Description
-A project built with React based on an assessment by enye (http://www.enye.tech/)
+A restaurant app built with ReactJS, Redux, Redux Thunk and Simple React Animations.
