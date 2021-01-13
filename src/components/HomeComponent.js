@@ -18,10 +18,7 @@ function Home({ error, records, isLoading }) {
 
     useEffect(() => {
         var elems = document.querySelectorAll('select');
-        var instances = M.FormSelect.init(elems, {});
-
-        var ele = document.querySelectorAll('.tap-target');
-        var insta = M.TapTarget.init(ele, {});
+         M.FormSelect.init(elems, {});
     }, [])
 
     const filter = (filterType) => {
